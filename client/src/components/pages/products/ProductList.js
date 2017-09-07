@@ -2,28 +2,29 @@ import React from 'react'
 import {Link} from 'react-router-dom'
 import * as AppPropTypes from '../../../lib/propTypes'
 import ProductCard from './ProductCard'
+import PropTypes from 'prop-types'
 
 const propTypes = {
-  domainData: AppPropTypes.domainData
+  domainData: AppPropTypes.domainData,
+  history: PropTypes.object.isRequired
 }
 
-const ProductList = (props) => {
-  return (
-    <div>
-      <h1> Product List </h1>
-      <Link to='/products/add'>Add A Product</Link>
+const ProductList = (props) =>
+  <div>
+    <h1> Product List </h1>
+    <Link to='/products/add'>Add A Product</Link>
 
-      {
-        props.domainData.products.map(product =>
-          <ProductCard
-            key={product._id}
-            product={product}
-            onDelete={() => props.domainData.deleteProduct(product._id)}
-          />
-        )}
-    </div>
-  )
-}
+    {
+      props.domainData.products.map(product =>
+        <ProductCard
+          key={product._id}
+          product={product}
+          onDelete={() => props.domainData.deleteProduct(product._id)}
+          onEdit={() => props.history.push(`/products/edit/${product._id}`)}
+        />
+      )
+    }
+  </div>
 
 ProductList.propTypes = propTypes
 
