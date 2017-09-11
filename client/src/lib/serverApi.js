@@ -25,6 +25,21 @@ const addProduct = (newProduct, callback) => {
     .then(json => callback(json.data))
 }
 
+const updateProduct = (product, callback) => {
+  const headers = new Headers({
+    'Content-Type': 'application/json'
+  })
+  const options = {
+    headers: headers,
+    method: 'PUT',
+    body: JSON.stringify(product)
+  }
+
+  fetch(`/api/products/${product._id}`, options)
+    .then(response => response.json())
+    .then(json => callback(json.data))
+}
+
 const deleteProduct = (productId, callback) => {
   const options = {
     method: 'DELETE'
@@ -35,4 +50,4 @@ const deleteProduct = (productId, callback) => {
     .then(json => callback(json.data))
 }
 
-export {getAllProducts, addProduct, deleteProduct}
+export {getAllProducts, addProduct, deleteProduct, updateProduct}

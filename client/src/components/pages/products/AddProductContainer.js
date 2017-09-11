@@ -13,7 +13,7 @@ class AddProductContainer extends Component {
     name: '',
     category: '',
     image: '',
-    price: 0
+    price: ''
   }
 
   onNameChanged = (event) => this.setState({
@@ -28,12 +28,9 @@ class AddProductContainer extends Component {
     image: event.target.value
   })
 
-  onPriceChanged = (event) => {
-    const price = event.target.value || '0'
-    this.setState({
-      price: parseFloat(price)
-    })
-  }
+  onPriceChanged = (event) => this.setState({
+    price: event.target.value
+  })
 
   onSubmit = (event) => {
     event.preventDefault()
