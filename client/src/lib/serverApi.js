@@ -65,4 +65,18 @@ const signUpUser = (user, callback) => {
     .then(json => callback(json))
 }
 
-export {getAllProducts, addProduct, deleteProduct, updateProduct, signUpUser}
+const loginUser = (email, password, callback) => {
+  const headers = new Headers({
+    'Content-Type': 'application/json'
+  })
+  const options = {
+    headers,
+    method: 'POST',
+    body: JSON.stringify({email, password})
+  }
+  fetch('/api/login', options)
+    .then(response => response.json())
+    .then(json => callback(json))
+}
+
+export {getAllProducts, addProduct, deleteProduct, updateProduct, signUpUser, loginUser}

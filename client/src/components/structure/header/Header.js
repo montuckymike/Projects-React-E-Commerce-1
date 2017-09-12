@@ -23,6 +23,7 @@ const Header = () =>
     <NavItem to='/about'>About</NavItem>
     <NavItem to='/products'>Products</NavItem>
     <NavItem to='/signup'>Sign Up </NavItem>
+    <NavItem to='/login'>Login </NavItem>
   </header>
 
 export default Header

@@ -39,6 +39,9 @@ class DomainDataProvider extends Component {
       user: savedUser
     }))
 
+  loginUser = (email, password) =>
+    ServerApi.loginUser(email, password, () => { console.log('hello user') })
+
   render () {
     const domainData = {
       isLoaded: this.state.isLoaded,
@@ -47,7 +50,8 @@ class DomainDataProvider extends Component {
       deleteProduct: this.deleteProduct,
       updateProduct: this.updateProduct,
       findProductById: this.findProductById,
-      signUpUser: this.signUpUser
+      signUpUser: this.signUpUser,
+      loginUser: this.loginUser
     }
 
     return this.state.isLoaded ? <Layout domainData={domainData} /> : null
