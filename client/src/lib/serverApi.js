@@ -50,4 +50,19 @@ const deleteProduct = (productId, callback) => {
     .then(json => callback(json.data))
 }
 
-export {getAllProducts, addProduct, deleteProduct, updateProduct}
+const signUpUser = (user, callback) => {
+  const headers = new Headers({
+    'Content-Type': 'application/json'
+  })
+  const options = {
+    headers,
+    method: 'POST',
+    body: JSON.stringify(user)
+  }
+
+  fetch('/api/signup', options)
+    .then(response => response.json())
+    .then(json => callback(json))
+}
+
+export {getAllProducts, addProduct, deleteProduct, updateProduct, signUpUser}

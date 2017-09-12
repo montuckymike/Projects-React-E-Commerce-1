@@ -1,18 +1,48 @@
 import React from 'react'
-import {Link} from 'react-router-dom'
+import PropTypes from 'prop-types'
 
-const SignUpForm = () => {
+const propTypes = {
+  email: PropTypes.string,
+  onEmailChanged: PropTypes.func,
+  password: PropTypes.string,
+  onPasswordChanged: PropTypes.func,
+  firstName: PropTypes.string,
+  onFirstNameChanged: PropTypes.func,
+  lastName: PropTypes.string,
+  onLastNameChanged: PropTypes.func,
+  onSubmit: PropTypes.func
+}
+
+const SignUpForm = (props) => {
   return (
     <div>
       <h1> Register User </h1>
-      <form>
-        First Name: <input type='text' />
-        Last Name: <input type='text' />
-        Email: <input type='text' />
-        Password: <input type='text' />
+      <form onSubmit={props.onSubmit}>
+        First Name: <input type='text'
+          value={props.firstName}
+          onChange={props.onFirstNameChanged}
+        />
+        Last Name: <input type='text'
+          value={props.lastName}
+          onChange={props.onLastNameChanged}
+        />
+        Email: <input type='text'
+          value={props.email}
+          onChange={props.onEmailChanged}
+        />
+        Password: <input type='text'
+          value={props.password}
+          onChange={props.onPasswordChanged}
+        />
+        <input
+          type='submit'
+          value='Submit User'
+        />
       </form>
     </div>
   )
 }
+
+SignUpForm.propTypes = propTypes
 
 export default SignUpForm
