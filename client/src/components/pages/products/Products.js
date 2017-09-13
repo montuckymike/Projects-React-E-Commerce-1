@@ -11,19 +11,15 @@ const propTypes = {
 
 const styles = {
   productContainer: {
-    border: 'solid red',
-    marginTop: 20,
     display: 'flex',
-    flexDirection: 'column',
-    width: '30%',
-    alignItems: 'center'
+    flexDirection: 'row',
+    flexWrap: 'wrap'
   }
 }
 
 const Products = (props) => {
   return (
-    <div style={styles.productContainer}>
-      <h1> Products </h1>
+    <div>
       <Route
         path='/products' exact
         render={(routeProps) => <ProductList domainData={props.domainData} history={routeProps.history} />} />
@@ -42,6 +38,7 @@ const Products = (props) => {
         }
       />
     </div>
+
   )
 }
 

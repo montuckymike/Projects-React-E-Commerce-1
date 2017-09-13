@@ -4,7 +4,7 @@ const styles = {
   hero: {
     position: 'fixed',
     top: 50,
-    height: 200,
+    height: 250,
     right: 0,
     left: 0,
     backgroundAttachment: 'fixed',

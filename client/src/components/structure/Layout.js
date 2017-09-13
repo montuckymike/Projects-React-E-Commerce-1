@@ -9,11 +9,11 @@ const propTypes = {
 }
 
 const Layout = (props) => (
-  <div id='layout'>
+  <main id='layout'>
     <Header />
     <Main domainData={props.domainData} />
     <Footer />
-  </div>
+  </main>
 )
 
 Layout.propTypes = propTypes

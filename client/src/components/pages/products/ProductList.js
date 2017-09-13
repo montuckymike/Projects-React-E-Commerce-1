@@ -9,21 +9,52 @@ const propTypes = {
   history: PropTypes.object.isRequired
 }
 
+const styles = {
+  pListContainer: {
+    display: 'flex',
+    flexWrap: 'wrap',
+    flexDirection: 'row',
+    width: '100%',
+    justifyContent: 'center'
+  },
+  button: {
+    backgroundColor: '#e74c3c',
+    color: 'white',
+    border: 'solid #e74c3c 2px',
+    padding: 10,
+    fontSize: 20,
+    borderRadius: 4
+  },
+  link: {
+    color: 'white',
+    textDecoration: 'none'
+  },
+  productHeader: {
+    marginBottom: 50,
+    display: 'flex',
+    justifyContent: 'center',
+    alignItems: 'center',
+    flexDirection: 'column'
+  }
+}
+
 const ProductList = (props) =>
   <div>
-    <h1> Product List </h1>
-    <Link to='/products/add'>Add A Product</Link>
-
-    {
-      props.domainData.products.map(product =>
-        <ProductCard
-          key={product._id}
-          product={product}
-          onDelete={() => props.domainData.deleteProduct(product._id)}
-          onEdit={() => props.history.push(`/products/edit/${product._id}`)}
-        />
-      )
-    }
+    <div style={styles.productHeader}>
+      <h1> Our Fine List of Products </h1>
+      <button style={styles.button}> <Link style={styles.link} to='/products/add'>Add A Product</Link> </button>
+    </div>
+    <div style={styles.pListContainer}>
+      {
+        props.domainData.products.map(product =>
+          <ProductCard
+            key={product._id}
+            product={product}
+            onDelete={() => props.domainData.deleteProduct(product._id)}              onEdit={() => props.history.push(`/products/edit/${product._id}`)}
+          />
+        )
+      }
+    </div>
   </div>
 
 ProductList.propTypes = propTypes

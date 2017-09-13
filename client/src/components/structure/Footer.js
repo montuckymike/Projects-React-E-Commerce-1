@@ -5,6 +5,7 @@ const styles = {
     height: 25,
     position: 'fixed',
     alignItems: 'center',
+    justifyContent: 'center',
     backgroundColor: '#494949',
     bottom: 0,
     display: 'flex',

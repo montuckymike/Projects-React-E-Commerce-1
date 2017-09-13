@@ -13,11 +13,40 @@ const propTypes = {
   onSubmit: PropTypes.func
 }
 
+const styles = {
+  form: {
+    display: 'flex',
+    flexDirection: 'column',
+    justifyContent: 'center',
+    alignItems: 'center',
+    marginBottom: 50
+  },
+  signHeader: {
+    display: 'flex',
+    flexDirection: 'column',
+    justifyContent: 'center',
+    alignItems: 'center',
+    width: '33%'
+  },
+  thumbnail: {
+    width: '100%'
+  },
+  mainSign: {
+    display: 'flex',
+    flexDirection: 'column',
+    justifyContent: 'center',
+    alignItems: 'center'
+  }
+}
+
 const SignUpForm = (props) => {
   return (
-    <div>
-      <h1> Register User </h1>
-      <form onSubmit={props.onSubmit}>
+    <div style={styles.mainSign}>
+      <div style={styles.signHeader}>
+        <h1> Register User </h1>
+        <img style={styles.thumbnail} src='https://maxcdn.icons8.com/Share/icon/nolan/Users//circled_user_male1600.png' />
+      </div>
+      <form style={styles.form} onSubmit={props.onSubmit}>
         First Name: <input type='text'
           value={props.firstName}
           onChange={props.onFirstNameChanged}
