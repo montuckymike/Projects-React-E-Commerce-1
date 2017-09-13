@@ -9,14 +9,6 @@ const propTypes = {
   domainData: AppPropTypes.domainData
 }
 
-const styles = {
-  productContainer: {
-    display: 'flex',
-    flexDirection: 'row',
-    flexWrap: 'wrap'
-  }
-}
-
 const Products = (props) => {
   return (
     <div>
