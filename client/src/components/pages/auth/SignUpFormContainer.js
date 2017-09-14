@@ -37,8 +37,8 @@ class SignUpFormContainer extends Component {
     event.preventDefault()
     console.log('On Submit Triggered')
     this.props.domainData.signUpUser(this.state)
-    this.props.history.push('/')
-    alert('Congrats, you are all signed up')
+      .then(() => this.props.history.push('/'))
+      .then(() => alert(`Congrats, you are all signed up ${this.state.firstName}`))
   }
 
   render () {

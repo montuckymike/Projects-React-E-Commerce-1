@@ -2,6 +2,7 @@ import React, {Component} from 'react'
 import PropTypes from 'prop-types'
 import * as AppPropTypes from '../../../lib/propTypes'
 import LoginForm from './LoginForm'
+import {withRouter} from 'react-router-dom'
 
 class LoginFormContainer extends Component {
   static propTypes = {
@@ -25,8 +26,11 @@ onPasswordChanged = (event) => this.setState({
 onSubmit = (event) => {
   event.preventDefault()
   console.log('domainData', this.props.domainData)
-  this.props.domainData.signInUser(this.state)
-  this.props.history.push('user ffdfs dfs ******')
+  this.props.domainData.loginUser(this.state.email, this.state.password)
+    .then((user) => {
+      this.props.history.push('/products')
+      alert(`You are logged in ${user.local.firstName}`)
+    })
 }
 
 render () {
@@ -42,4 +46,4 @@ render () {
 }
 }
 
-export default LoginFormContainer
+export default withRouter(LoginFormContainer)

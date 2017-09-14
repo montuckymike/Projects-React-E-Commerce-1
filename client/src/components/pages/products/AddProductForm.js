@@ -5,7 +5,8 @@ import {Link} from 'react-router-dom'
 const styles = {
   form: {
     display: 'flex',
-    flexDirection: 'column'
+    flexDirection: 'column',
+    width: '33.33%'
   }
 }
 
@@ -37,6 +38,7 @@ const AddProductForm = (props) => {
         />
       </form>
       <Link to='/products'>Cancel (Back to Products)</Link>
+      <h1>End Add </h1>
     </div>
   )
 }

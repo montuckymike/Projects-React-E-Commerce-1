@@ -28,7 +28,7 @@ const styles = {
   }
 }
 
-const Header = () =>
+const Header = (user) =>
   <nav style={styles.header}>
     <div>
       <NavItem to='/'>Home</NavItem>
