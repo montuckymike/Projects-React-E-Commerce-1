@@ -1,6 +1,7 @@
 import PropTypes from 'prop-types'
 import React from 'react'
 import {Link} from 'react-router-dom'
+import injectSheet from 'react-jss'
 
 const styles = {
   form: {
@@ -9,6 +10,8 @@ const styles = {
     width: '33.33%'
   }
 }
+
+const enhancer = injectSheet(styles)
 
 const propTypes = {
   name: PropTypes.string.isRequired,
@@ -26,7 +29,7 @@ const AddProductForm = (props) => {
   return (
     <div>
       <h1> Add Product Form </h1>
-      <form style={styles.form} onSubmit={props.onSubmit}>
+      <form className={props.classes.form} onSubmit={props.onSubmit}>
           Name: <input type='text' value={props.name} onChange={props.onNameChanged} />
           Category: <input type='text' value={props.category} onChange={props.onCategoryChanged} />
           Image: <input type='text' value={props.image} onChange={props.onImageChanged} />
@@ -43,6 +46,9 @@ const AddProductForm = (props) => {
   )
 }
 
+AddProductForm.propTypes = {
+  classes: PropTypes.object.isRequired
+}
 AddProductForm.propTypes = propTypes
 
-export default AddProductForm
+export default enhancer(AddProductForm)

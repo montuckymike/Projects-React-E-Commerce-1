@@ -1,4 +1,6 @@
 import React from 'react'
+import injectSheet from 'react-jss'
+import PropTypes from 'prop-types'
 
 const styles = {
   footer: {
@@ -15,12 +17,18 @@ const styles = {
   }
 }
 
-const Footer = () => {
+const enhancer = injectSheet(styles)
+
+const Footer = (props) => {
   return (
-    <footer style={styles.footer}>
+    <footer className={props.classes.footer}>
       &copy; &nbsp; <p> Some Company 2017 </p>
     </footer>
   )
 }
 
-export default Footer
+Footer.propTypes = {
+  classes: PropTypes.object.isRequired
+}
+
+export default enhancer(Footer)

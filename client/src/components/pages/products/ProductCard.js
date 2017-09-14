@@ -1,6 +1,7 @@
 import PropTypes from 'prop-types'
 import React from 'react'
 import * as AppPropTypes from '../../../lib/propTypes'
+import injectSheet from 'react-jss'
 
 const propTypes = {
   product: AppPropTypes.product,
@@ -58,25 +59,30 @@ const styles = {
   }
 }
 
+const enhancer = injectSheet(styles)
+
 const ProductCard = (props) =>
-  <div style={styles.productItem}>
-    <div style={styles.imageTitle}>
-      <img style={styles.thumbnail} src={props.product.image} />
-      <h1 style={styles.productTitle}>{props.product.name}</h1>
+  <div className={props.classes.productItem}>
+    <div className={props.classes.imageTitle}>
+      <img className={props.classes.thumbnail} src={props.product.image} />
+      <h1 className={props.classes.productTitle}>{props.product.name}</h1>
     </div>
-    <div style={styles.catEgory}>
-      <p style={styles.p}> Category:</p>
+    <div className={props.classes.catEgory}>
+      <p className={props.classes.p}> Category:</p>
       <h2>{props.product.category}</h2>
     </div>
-    <h3 style={styles.price}>{props.product.price}</h3>
-    <div style={styles.buttonContainer}>
-      <button style={styles.button} onClick={props.onEdit}>Edit</button>
+    <h3 className={props.classes.price}>{props.product.price}</h3>
+    <div className={props.classes.buttonContainer}>
+      <button className={props.classes.button} onClick={props.onEdit}>Edit</button>
     </div>
-    <div style={styles.buttonContainer}>
-      <button style={styles.button} onClick={props.onDelete}>Delete</button>
+    <div className={props.classes.buttonContainer}>
+      <button className={props.classes.button} onClick={props.onDelete}>Delete</button>
     </div>
   </div>
 
+ProductCard.propTypes = {
+  classes: PropTypes.object.isRequired
+}
 ProductCard.propTypes = propTypes
 
-export default ProductCard
+export default enhancer(ProductCard)

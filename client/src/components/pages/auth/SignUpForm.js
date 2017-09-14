@@ -1,5 +1,6 @@
 import React from 'react'
 import PropTypes from 'prop-types'
+import injectSheet from 'react-jss'
 
 const propTypes = {
   email: PropTypes.string,
@@ -39,14 +40,16 @@ const styles = {
   }
 }
 
+const enhancer = injectSheet(styles)
+
 const SignUpForm = (props) => {
   return (
-    <div style={styles.mainSign}>
-      <div style={styles.signHeader}>
+    <div className={props.classes.mainSign}>
+      <div className={props.classes.signHeader}>
         <h1> Register User </h1>
-        <img style={styles.thumbnail} src='https://maxcdn.icons8.com/Share/icon/nolan/Users//circled_user_male1600.png' />
+        <img className={props.classes.thumbnail} src='https://maxcdn.icons8.com/Share/icon/nolan/Users//circled_user_male1600.png' />
       </div>
-      <form style={styles.form} onSubmit={props.onSubmit}>
+      <form className={props.classes.form} onSubmit={props.onSubmit}>
         First Name: <input type='text'
           value={props.firstName}
           onChange={props.onFirstNameChanged}
@@ -72,6 +75,10 @@ const SignUpForm = (props) => {
   )
 }
 
+SignUpForm.propTypes = {
+  classes: PropTypes.object.isRequired
+}
+
 SignUpForm.propTypes = propTypes
 
-export default SignUpForm
+export default enhancer(SignUpForm)

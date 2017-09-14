@@ -1,6 +1,7 @@
 import React from 'react'
-import {Link} from 'react-router-dom'
-import LoginForm from '../pages/auth/LoginForm'
+import LoginContainer from '../pages/auth/LoginContainer'
+import injectSheet from 'react-jss'
+import PropTypes from 'prop-types'
 
 const styles = {
   hero: {
@@ -58,20 +59,26 @@ const styles = {
   }
 }
 
-const Hero = () => {
+const enhancer = injectSheet(styles)
+
+const Hero = (props) => {
   return (
-    <div style={styles.hero}>
-      <div style={styles.heroText}>
-        <h1 style={styles.heroTitle}> Start Playing with React Now! </h1>
-        <div style={styles.buttonDiv}>
-          <LoginForm />
+    <div className={props.classes.hero}>
+      <div className={props.classes.heroText}>
+        <h1 className={props.classes.heroTitle}> Start Playing with React Now! </h1>
+        <div className={props.classes.buttonDiv}>
+          <LoginContainer domainData={props.domainData} />
         </div>
       </div>
-      <div style={styles.heroFun}>
-        <img style={styles.heroFunPic} src='https://quicksell.com/wp-content/uploads/2016/12/iphone-6-png-background-11.png' />
+      <div className={props.classes.heroFun}>
+        <img className={props.classes.heroFunPic} src='https://i.giphy.com/media/XHf0Fn7sKeSRy/giphy.webp' />
       </div>
     </div>
   )
 }
 
-export default Hero
+Hero.propTypes = {
+  classes: PropTypes.object.isRequired
+}
+
+export default enhancer(Hero)

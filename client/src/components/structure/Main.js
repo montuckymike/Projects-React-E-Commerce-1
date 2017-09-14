@@ -12,15 +12,10 @@ const propTypes = {
   domainData: AppPropTypes.domainData
 }
 
-const styles = {
-  article: {
-  }
-}
-
 const Main = (props) => {
   return (
-    <article style={styles.article}>
-      <Hero />
+    <article>
+      <Hero domainData={props.domainData} />
       <Route path='/' exact component={Home} />
       <Route path='/about' component={About} />
       <Route

@@ -3,6 +3,7 @@ import {Link} from 'react-router-dom'
 import * as AppPropTypes from '../../../lib/propTypes'
 import ProductCard from './ProductCard'
 import PropTypes from 'prop-types'
+import injectSheet from 'react-jss'
 
 const propTypes = {
   domainData: AppPropTypes.domainData,
@@ -38,13 +39,15 @@ const styles = {
   }
 }
 
+const enhancer = injectSheet(styles)
+
 const ProductList = (props) =>
   <div>
-    <div style={styles.productHeader}>
+    <div className={props.classes.productHeader}>
       <h1> Our Fine List of Products </h1>
-      <button style={styles.button}> <Link style={styles.link} to='/products/add'>Add A Product</Link> </button>
+      <button className={props.classes.button}> <Link className={props.classes.link} to='/products/add'>Add A Product</Link> </button>
     </div>
-    <div style={styles.pListContainer}>
+    <div className={props.classes.pListContainer}>
       {
         props.domainData.products.map(product =>
           <ProductCard
@@ -57,6 +60,9 @@ const ProductList = (props) =>
     </div>
   </div>
 
+ProductList.propTypes = {
+  classes: PropTypes.object.isRequired
+}
 ProductList.propTypes = propTypes
 
-export default ProductList
+export default enhancer(ProductList)

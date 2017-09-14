@@ -1,5 +1,6 @@
 import React from 'react'
 import PropTypes from 'prop-types'
+import injectSheet from 'react-jss'
 
 const propTypes = {
   email: PropTypes.string.isRequired,
@@ -21,7 +22,10 @@ const styles = {
     height: 35,
     background: 'rgba(255, 255, 255, 0.6)',
     border: 'rgba(255, 255, 255, 0.6)',
-    borderRight: 'white'
+    borderRight: 'white',
+    '&::placeholder': {
+      color: 'red'
+    }
   },
   inputNeatButton: {
     height: 36,
@@ -30,30 +34,36 @@ const styles = {
   }
 }
 
+const enhancer = injectSheet(styles)
+
 const LoginForm = (props) =>
   <div>
-    <div style={styles.header}>
+    <div className={props.classes.header}>
       <h1>Login</h1>
     </div>
-    <form style={styles.form} onSubmit={props.onSubmit}>
+    <form className={props.classes.form} onSubmit={props.onSubmit}>
       <input
-        style={styles.inputNeat}
+        className={props.classes.inputNeat}
         type='text'
         value={props.email}
         placeholder='Email Address'
         onChange={props.onEmailChanged} />
       <input
-        style={styles.inputNeat}
+        className={props.classes.inputNeat}
         type='text'
         value={props.password}
         placeholder='Password'
         onChange={props.onPasswordChanged} />
       <input
-        style={styles.inputNeatButton}
+        className={props.classes.inputNeatButton}
         type='submit'
         value='Submit' />
     </form>
   </div>
 
+LoginForm.propTypes = {
+  classes: PropTypes.object.isRequired
+}
+
 LoginForm.propTypes = propTypes
-export default LoginForm
+export default enhancer(LoginForm)
