@@ -1,38 +1,25 @@
 import React from 'react'
 import * as AppPropTypes from '../../../lib/propTypes'
 import PropTypes from 'prop-types'
+import AddressFields from './AddressFields'
 
 const propTypes = {
-  domainData: AppPropTypes.domainData,
-  street: PropTypes.string.isRequired,
-  onStreetChanged: PropTypes.func.isRequired,
-  city: PropTypes.string.isRequired,
-  onCityChanged: PropTypes.string.isRequired,
-  billState: PropTypes.string.isRequired,
-  onBillStateChanged: PropTypes.func.isRequired,
-  zipCode: PropTypes.string.isRequired,
-  onZipCodeChanged: PropTypes.string.isRequired
+  domainData: AppPropTypes.domainData
 }
 
 const Checkout = (props) => {
   return (
     <div>
-      <h1> Hello from Checkout </h1>
+      <h1> Checkout </h1>
       <form>
-        <label> Street Name: </label>
-        <input type='text' value={props.street} onChange={props.onStreetChanged} />
-        <label> City: </label>
-        <input type='text' value={props.city} onChange={props.onCityChanged} />
-        <label> State: </label>
-        <input type='text' value={props.billState} onChange={props.onBillStateChanged} />
-        <label> Zip Code: </label>
-        <input type='text' value={props.zipCode} onChange={props.onZipCodeChanged} />
+        <AddressFields domainData={props.domainData} addressType={'billing'} />
+        <AddressFields domainData={props.domainData} addressType={'shipping'} />
       </form>
       <div>
         Order Total: ${props.domainData.totalCart()}
       </div>
       <button type='submit'>Place Order</button>
-      <h1> Bottom </h1>
+      <h1> _ </h1>
     </div>
   )
 }

@@ -10,7 +10,10 @@ class DomainDataProvider extends Component {
     products: [],
     user: null,
     cart: {},
-    address: {}
+    address: {
+      'billing': {},
+      'shipping': {}
+    }
   }
 
 methods = {
@@ -59,7 +62,6 @@ methods = {
   loginUser: (email, password) =>
     ServerApi.loginUser(email, password)
       .then((loggedInUser) => {
-        console.log(loggedInUser)
         this.setState({
           user: loggedInUser
         })
@@ -111,6 +113,11 @@ methods = {
     const cart = this.state.cart
     return products.filter((product) => cart[product._id])
       .reduce((sum, product) => sum + (product.price * cart[product._id]), 0).toFixed(2)
+  },
+  updateAddressField: (value, field, type) => {
+    const address = this.state.address
+    address[type][field] = value
+    this.setState({address})
   }
 }
 
