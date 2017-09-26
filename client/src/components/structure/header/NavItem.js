@@ -5,7 +5,8 @@ import injectSheet from 'react-jss'
 
 const propTypes = {
   to: PropTypes.string.isRequired,
-  children: PropTypes.string.isRequired
+  children: PropTypes.string.isRequired,
+  classes: PropTypes.object.isRequired
 }
 
 const styles = {
@@ -15,6 +16,10 @@ const styles = {
     color: 'white',
     paddingRight: '20px'
   }
+}
+
+const defaultProps = {
+  exact: false
 }
 
 const enhancer = injectSheet(styles)
@@ -29,5 +34,7 @@ NavItem.propTypes = {
   classes: PropTypes.object.isRequired
 }
 NavItem.propTypes = propTypes
+
+NavItem.defaultProps = defaultProps
 
 export default enhancer(NavItem)

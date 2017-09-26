@@ -53,6 +53,7 @@ const ProductList = (props) =>
           <ProductCard
             key={product._id}
             product={product}
+            addToCart={() => props.domainData.addToCart(product._id)}
             onDelete={() => props.domainData.deleteProduct(product._id)}              onEdit={() => props.history.push(`/products/edit/${product._id}`)}
           />
         )

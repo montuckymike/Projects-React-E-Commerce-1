@@ -7,6 +7,9 @@ import Hero from './Hero'
 import Products from '../pages/products/Products'
 import SignUpFormContainer from '../pages/auth/SignUpFormContainer'
 import LoginContainer from '../pages/auth/LoginContainer'
+import UserProfileContainer from '../pages/user/UserProfileContainer'
+import Checkout from '../pages/checkout/Checkout'
+import Cart from '../pages/cart/Cart'
 
 const propTypes = {
   domainData: AppPropTypes.domainData
@@ -29,6 +32,18 @@ const Main = (props) => {
       <Route
         path='/login'
         render={() => <LoginContainer domainData={props.domainData} />}
+      />
+      <Route
+        path='/user-profile'
+        render={() => <UserProfileContainer domainData={props.domainData} />}
+      />
+      <Route
+        path='/cart'
+        render={() => <Cart domainData={props.domainData} />}
+      />
+      <Route
+        path='/checkout'
+        render={() => <Checkout domainData={props.domainData} />}
       />
     </article>
   )

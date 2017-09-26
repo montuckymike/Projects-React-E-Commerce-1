@@ -6,17 +6,20 @@ const UserSchema = new mongoose.Schema({
     email: String,
     password: String,
     firstName: String,
-    lastName: String
+    lastName: String,
+    isAdmin: Boolean
   },
   cart: [{type: mongoose.Schema.Types.ObjectId, ref: 'Product'}],
   orders: [{type: mongoose.Schema.Types.ObjectId, ref: 'Order'}],
-  reviews: [{type: mongoose.Schema.Types.ObjectId, ref: 'Review'}]
+  reviews: [{type: mongoose.Schema.Types.ObjectId, ref: 'Review'}],
+  isAdmin: Boolean
 })
 
 UserSchema.methods.loadData = function (data) {
   this.name = data.name || this.name
   this.password = data.password || this.password
   this.address = data.address || this.address
+  this.isAdmin = false
 }
 
 UserSchema.methods.setMetaDates = function () {

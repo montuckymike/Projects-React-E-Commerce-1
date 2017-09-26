@@ -6,7 +6,8 @@ import injectSheet from 'react-jss'
 const propTypes = {
   product: AppPropTypes.product,
   onDelete: PropTypes.func.isRequired,
-  onEdit: PropTypes.func.isRequired
+  onEdit: PropTypes.func.isRequired,
+  addToCart: PropTypes.func.isRequired
 }
 
 const styles = {
@@ -71,18 +72,26 @@ const ProductCard = (props) =>
       <p className={props.classes.p}> Category:</p>
       <h2>{props.product.category}</h2>
     </div>
-    <h3 className={props.classes.price}>{props.product.price}</h3>
+    <h3 className={props.classes.price}>${props.product.price}</h3>
     <div className={props.classes.buttonContainer}>
       <button className={props.classes.button} onClick={props.onEdit}>Edit</button>
     </div>
     <div className={props.classes.buttonContainer}>
       <button className={props.classes.button} onClick={props.onDelete}>Delete</button>
     </div>
+    <div className={props.classes.buttonContainer}>
+      <button className={props.classes.button} onClick={props.addToCart}>Add to Cart</button>
+    </div>
   </div>
 
 ProductCard.propTypes = {
-  classes: PropTypes.object.isRequired
+  classes: PropTypes.object.isRequired,
+  product: AppPropTypes.product,
+  onEdit: PropTypes.func.isRequired,
+  onDelete: PropTypes.func.isRequired,
+  addToCart: PropTypes.func.isRequired
 }
+
 ProductCard.propTypes = propTypes
 
 export default enhancer(ProductCard)

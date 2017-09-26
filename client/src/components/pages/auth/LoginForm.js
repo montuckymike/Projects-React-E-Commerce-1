@@ -14,23 +14,43 @@ const styles = {
   form: {
     display: 'flex',
     flexDirection: 'row',
-    justifyContent: 'space-between',
-    alignItems: 'center',
-    marginBottom: 50
+    height: 100
   },
   inputNeat: {
-    height: 35,
-    background: 'rgba(255, 255, 255, 0.6)',
+    borderRadius: [50, 0, 0, 50],
+    height: '50%',
+    paddingLeft: 25,
+    background: 'rgba(255, 255, 255, 1)',
     border: 'rgba(255, 255, 255, 0.6)',
-    borderRight: 'white',
     '&::placeholder': {
-      color: 'red'
+      color: '#A9B0C1'
+    }
+  },
+  inputNeatPassword: {
+    background: 'rgba(229, 237, 239, 1)',
+    height: '50%',
+    paddingLeft: 25,
+    border: 'rgba(255, 255, 255, 0.6)',
+    '&::placeholder': {
+      color: '#A9B0C1'
     }
   },
   inputNeatButton: {
-    height: 36,
-    background: 'rgba(52, 152, 219, 0.6)',
-    border: 'solid white 1px'
+    borderRadius: [0, 50, 50, 0],
+    height: '52%',
+    paddingLeft: 10,
+    paddingRight: 20,
+    background: 'linear-gradient(to right, #31E58B 0%, #24BD7A 100%)',
+    color: 'white',
+    fontSize: '1em',
+    border: 'solid white 2px',
+    fontWeight: 'bold'
+  },
+  inputs: {
+    width: '40%'
+  },
+  go: {
+    width: '20%'
   }
 }
 
@@ -38,26 +58,30 @@ const enhancer = injectSheet(styles)
 
 const LoginForm = (props) =>
   <div>
-    <div className={props.classes.header}>
-      <h1>Login</h1>
-    </div>
+
     <form className={props.classes.form} onSubmit={props.onSubmit}>
-      <input
-        className={props.classes.inputNeat}
-        type='text'
-        value={props.email}
-        placeholder='Email Address'
-        onChange={props.onEmailChanged} />
-      <input
-        className={props.classes.inputNeat}
-        type='text'
-        value={props.password}
-        placeholder='Password'
-        onChange={props.onPasswordChanged} />
-      <input
-        className={props.classes.inputNeatButton}
-        type='submit'
-        value='Submit' />
+      <div className={props.classes.inputs}>
+        <input
+          className={props.classes.inputNeat}
+          type='text'
+          value={props.email}
+          placeholder='Email Address'
+          onChange={props.onEmailChanged} />
+      </div>
+      <div className={props.classes.inputs}>
+        <input
+          className={props.classes.inputNeatPassword}
+          type='text'
+          value={props.password}
+          placeholder='Password'
+          onChange={props.onPasswordChanged} />
+      </div>
+      <div className={props.classes.go}>
+        <input
+          className={props.classes.inputNeatButton}
+          type='submit'
+          value='GO' />
+      </div>
     </form>
   </div>
 

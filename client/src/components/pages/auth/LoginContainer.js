@@ -31,6 +31,7 @@ onSubmit = (event) => {
       this.props.history.push('/products')
       alert(`You are logged in ${user.local.firstName}`)
     })
+    .catch((err) => alert(err + ' The email and/or password is incorrect'))
 }
 
 render () {

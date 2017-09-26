@@ -33,7 +33,7 @@ const AddProductForm = (props) => {
           Name: <input type='text' value={props.name} onChange={props.onNameChanged} />
           Category: <input type='text' value={props.category} onChange={props.onCategoryChanged} />
           Image: <input type='text' value={props.image} onChange={props.onImageChanged} />
-          Price: <input type='text' value={props.price} onChange={props.onPriceChanged} />
+          Price: <input type='number' value={props.price} onChange={props.onPriceChanged} />
         <input
           type='submit'
           value='Submit Form'
