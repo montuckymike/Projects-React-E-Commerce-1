@@ -9,13 +9,13 @@ const styles = {
     height: 800,
     display: 'flex',
     alignItems: 'center',
-    justifyContent: 'flex-start',
+    justifyContent: 'space-between',
     backgroundAttachment: 'fixed',
     backgroundPosition: 'center',
     backgroundRepeat: 'no-repeat',
     backgroundSize: 'cover',
     backgroundImage: 'url("https://static.pexels.com/photos/2242/wall-sport-green-bike.jpg")',
-    clipPath: 'polygon(0 0, 100% 0, 100% 96%, 0 100%)'
+    clipPath: 'polygon(0 0, 100% 0, 100% 90%, 0 100%)'
   },
   heroText: {
     color: 'white',
@@ -36,7 +36,9 @@ const styles = {
   },
   heroFunPic: {
     marginTop: 500,
-    width: '33.33%'
+    width: '50%',
+    'z-index': '1',
+    position: 'relative'
   },
   buttonDiv: {
     display: 'flex',
@@ -62,9 +64,7 @@ const Hero = (props) => {
           <LoginContainer domainData={props.domainData} />
         </div>
       </div>
-      <div className={props.classes.heroFun}>
-        <img className={props.classes.heroFunPic} src='https://i.giphy.com/media/XHf0Fn7sKeSRy/giphy.webp' />
-      </div>
+      <img className={props.classes.heroFunPic} src='https://staticshop.o2.co.uk/product/images/iphone-x-space-grey-sku-header.png?cb=4097182fcd8a0d7b7e51b89d4a48f5bc' />
     </div>
   )
 }

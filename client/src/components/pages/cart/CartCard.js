@@ -14,6 +14,15 @@ const propTypes = {
 const styles = {
   header: {
     color: 'red'
+  },
+  cartImage: {
+    width: '100%'
+  },
+  cartContainer: {
+    display: 'flex',
+    flexDirection: 'column',
+    justifyContent: 'center',
+    width: '25%'
   }
 }
 
@@ -31,19 +40,15 @@ const CartCard = (props) => {
     }
   }
   return (
-    <div>
-      <div>
-        <h1 className={props.classes.header}> Cart Card </h1>
-      </div>
-      <div>
-        <h1>Product Name: {props.product.name}</h1>
-        <button onClick={props.onDelete}>Delete Items In Cart</button>
-        <input
-          type='number'
-          value={props.quantity}
-          onChange={onChange}
-        />
-      </div>
+    <div className={props.classes.cartContainer}>
+      <img className={props.classes.cartImage} src={props.product.image} />
+      <h3>Product Name: {props.product.name}</h3>
+      <button onClick={props.onDelete}>Delete Items In Cart</button>
+      <input
+        type='number'
+        value={props.quantity}
+        onChange={onChange}
+      />
     </div>
   )
 }
