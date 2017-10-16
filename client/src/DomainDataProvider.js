@@ -11,8 +11,8 @@ class DomainDataProvider extends Component {
     user: null,
     cart: {},
     address: {
-      'billing': {},
-      'shipping': {}
+      billing: {},
+      shipping: {}
     }
   }
 
@@ -118,6 +118,15 @@ methods = {
     const address = this.state.address
     address[type][field] = value
     this.setState({address})
+  },
+  placeOrder: () => {
+    const order = {
+      shipping: this.state.address.billing,
+      billing: this.state.address.shipping,
+      cart: this.state.cart
+    }
+    ServerApi.addOrder(order)
+      .then(() => console.log('order placed', order))
   }
 }
 

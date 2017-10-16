@@ -40,3 +40,5 @@ export const loginUser = (email, password) => ajaxRequest('login', 'POST', {emai
 export const getUser = () => ajaxRequest('get_user', 'GET')
 
 export const logoutUser = () => ajaxRequest('logout', 'GET')
+
+export const addOrder = (order) => ajaxRequest('orders', 'POST', order)
